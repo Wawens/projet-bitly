@@ -6,10 +6,14 @@
         $shortcut = htmlspecialchars($_GET['q']);
 
         // Existe-t-il ?
-        $bdd = new PDO('mysql:host=localhost;dbname=bitly;charset=utf8', 'root', '');
+        $bdd = new PDO('mysql:host=localhost;dbname=base_ecv_wjanvier;charset=utf8', 'sql_ecv_wjanvier', 'jgTARj7zJX');
         $requete = $bdd->prepare('SELECT COUNT(*) AS nombre FROM links WHERE shortcut = ?');
         $requete->execute([$shortcut]);
 
+
+
+
+        
         while($resultat = $requete->fetch()) {
             
             if($resultat['nombre'] != 1) {
@@ -49,7 +53,7 @@
         $shortcut = crypt($url, rand());
 
         // Vérification d'un doublon
-        $bdd = new PDO('mysql:host=localhost;dbname=bitly;charset=utf8', 'root', '');
+       $bdd = new PDO('mysql:host=localhost;dbname=base_ecv_wjanvier;charset=utf8', 'sql_ecv_wjanvier', 'jgTARj7zJX');
       $req = $bdd->prepare('SELECT COUNT(*) AS nombre FROM links WHERE url = ?');
      $req->execute([$url]);
 
@@ -116,7 +120,7 @@
             <div class="center">
                 <div id="result">
                     <b>URL RACCOURCIE : </b>
-                    http://localhost/raccourci_d-url/?q=<?php echo htmlspecialchars($_GET['short']); ?>
+                    http://wjanvier.ecv-monsite.fr/raccourci_d-url/?q=<?php echo htmlspecialchars($_GET['short']); ?>
                 </div>
             </div>
 
